@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE=production node ./src/index",
-    "dev": "NODE=development nodemon ./src/index",
+    "start": "NODE=production node ./index",
+    "dev": "NODE=development nodemon ./index",
     "test": "ava",
     "coverage": "nyc --check-coverage --lines 100 npm test",
     "lint": "node node_modules/eslint/bin/eslint.js src",
@@ -32,7 +32,7 @@
   },
   "ava": {
     "files": [
-      "**/test.js"
+      "src/**/test.js"
     ],
     "require": [
       "babel-register"

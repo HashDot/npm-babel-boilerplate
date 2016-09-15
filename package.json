@@ -4,8 +4,49 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE=production node ./src/index",
+    "dev": "NODE=development nodemon ./src/index",
+    "test": "ava",
+    "coverage": "nyc --check-coverage --lines 100 npm test",
+    "lint": "node node_modules/eslint/bin/eslint.js src",
+    "build-cmd": "babel src -d lib --ignore test.js",
+    "build": "npm run lint; npm run coverage; npm run build-cmd"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Lars Hampe <lars@hafen.io>",
+  "license": "MIT",
+  "dependencies": {
+    "ava": "^0.16.0",
+    "babel-core": "^6.14.0",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.15.0",
+    "nyc": "^8.3.0"
+  },
+  "ava": {
+    "files": [
+      "**/test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "node_modules",
+      "lib"
+    ]
+  }
 }

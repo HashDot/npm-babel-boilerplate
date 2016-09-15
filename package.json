@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE=production node ./index",
+    "start": "NODE=production node ./lib/index",
     "dev": "NODE=development nodemon ./index",
     "test": "ava",
     "coverage": "nyc --check-coverage --lines 100 npm test",
